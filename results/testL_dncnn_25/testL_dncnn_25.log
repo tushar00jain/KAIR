@@ -1,0 +1,6 @@
+21-02-01 22:12:53.379 : Model path: model_zoo/dncnn_25.pth
+21-02-01 22:12:53.380 : Params number: 557057
+21-02-01 22:12:53.380 : model_name:dncnn_25, image sigma:25
+21-02-01 22:12:53.380 : testsets/testL
+21-02-01 22:12:53.812 : 01.png - PSNR: 16.55 dB; SSIM: 0.1621.
+21-02-01 22:12:53.814 : Average PSNR/SSIM(RGB) - testL_dncnn_25 - PSNR: 16.55 dB; SSIM: 0.1621

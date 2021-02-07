@@ -68,7 +68,7 @@ def main():
 
     noise_level_img = 25             # noise level for noisy image
     model_name = 'dncnn_25'          # 'dncnn_15' | 'dncnn_25' | 'dncnn_50' | 'dncnn_gray_blind' | 'dncnn_color_blind' | 'dncnn3'
-    testset_name = 'bsd68'           # test set, 'bsd68' | 'set12'
+    testset_name = 'testL'           # test set, 'bsd68' | 'set12'
     need_degradation = True          # default: True
     x8 = False                       # default: False, x8 to boost performance
     show_img = False                 # default: False
@@ -98,7 +98,7 @@ def main():
     # ----------------------------------------
 
     L_path = os.path.join(testsets, testset_name) # L_path, for Low-quality images
-    H_path = L_path                               # H_path, for High-quality images
+    H_path = os.path.join(testsets, 'testH')      # H_path, for High-quality images
     E_path = os.path.join(results, result_name)   # E_path, for Estimated images
     util.mkdir(E_path)
 
@@ -116,8 +116,8 @@ def main():
     # ----------------------------------------
 
     from models.network_dncnn import DnCNN as net
-    model = net(in_nc=n_channels, out_nc=n_channels, nc=64, nb=nb, act_mode='R')
-    # model = net(in_nc=n_channels, out_nc=n_channels, nc=64, nb=nb, act_mode='BR')  # use this if BN is not merged by utils_bnorm.merge_bn(model)
+    # model = net(in_nc=n_channels, out_nc=n_channels, nc=64, nb=nb, act_mode='R')
+    model = net(in_nc=n_channels, out_nc=n_channels, nc=64, nb=nb, act_mode='BR')  # use this if BN is not merged by utils_bnorm.merge_bn(model)
     model.load_state_dict(torch.load(model_path), strict=True)
     model.eval()
     for k, v in model.named_parameters():
